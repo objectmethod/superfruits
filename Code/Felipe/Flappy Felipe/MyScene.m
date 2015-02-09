@@ -7,6 +7,7 @@
 //
 
 #import "MyScene.h"
+#import "AppDelegate.h"
 
 typedef NS_ENUM(int, Layer) {
   LayerBackground,
@@ -174,7 +175,10 @@ static const int APP_STORE_ID = 820464950;
 
    //Player position
     
-  _player = [SKSpriteNode spriteNodeWithImageNamed:@"Bird0"];
+    AppDelegate  *appDelegate = ((AppDelegate*)[[UIApplication sharedApplication] delegate]);
+    NSString *characterImageName = appDelegate.characterImageName;
+    
+    _player = [SKSpriteNode spriteNodeWithImageNamed:[NSString stringWithFormat:@"%@-0", characterImageName]];
   _player.position = CGPointMake(self.size.width * 0.2, _playableHeight * 0.4 + _playableStart);
   _player.zPosition = LayerPlayer;
   [_worldNode addChild:_player];
@@ -399,9 +403,12 @@ static const int APP_STORE_ID = 820464950;
 
   // #2: Good
   SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"sprites"];
+    
+    AppDelegate  *appDelegate = ((AppDelegate*)[[UIApplication sharedApplication] delegate]);
+    NSString *characterImageName = appDelegate.characterImageName;
 
   for (int i = 0; i < kNumBirdFrames; i++) {
-    NSString *textureName = [NSString stringWithFormat:@"Bird%d", i];
+    NSString *textureName = [NSString stringWithFormat:@"%@-%d", characterImageName, i];
     // #1: Bad
 //    [textures addObject:[SKTexture textureWithImageNamed:textureName]];
     // #2: Good
@@ -409,7 +416,7 @@ static const int APP_STORE_ID = 820464950;
   }
 
   for (int i = kNumBirdFrames - 2; i > 0; i--) {
-    NSString *textureName = [NSString stringWithFormat:@"Bird%d", i];
+    NSString *textureName = [NSString stringWithFormat:@"%@-%d", characterImageName, i];
     [textures addObject:[atlas textureNamed:textureName]];
   }
   
