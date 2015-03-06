@@ -44,7 +44,7 @@
 - (NSString *)characterImageName {
     if (_characterImageName == nil) {
         // Step 1.) change the number of characters
-        int r = arc4random_uniform(1);
+        int r = arc4random_uniform(2);
         
         NSLog(@"r: %d", r);
         
