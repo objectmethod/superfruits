@@ -481,9 +481,10 @@ static const int APP_STORE_ID = 820464950;
   SKSpriteNode *bottomObstacle = [self createObstacle];
   bottomObstacle.name = @"BottomObstacle";
   float startX = self.size.width + bottomObstacle.size.width/2;
-  
-  float bottomObstacleMin = (_playableStart - bottomObstacle.size.height/2) + _playableHeight * kBottomObstacleMinFraction;
+    float bottomObstacleMin = 180; //(_playableStart - bottomObstacle.size.height/2) + _playableHeight * kBottomObstacleMinFraction;
   float bottomObstacleMax = (_playableStart - bottomObstacle.size.height/2) + _playableHeight * kBottomObstacleMaxFraction;
+    
+    
   bottomObstacle.position = CGPointMake(startX, RandomFloatRange(bottomObstacleMin, bottomObstacleMax));
   [_worldNode addChild:bottomObstacle];
     
