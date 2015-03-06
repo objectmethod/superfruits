@@ -49,6 +49,7 @@
         NSLog(@"r: %d", r);
         
         // Step 2.) add images to project named as
+        // hello
         // strawberry: Bird0-0, Bird0-1, Bird0-2, etc.
         // blueberry: Bird1-0, Bird1-1, Bird1-2, etc.
         // etc.
