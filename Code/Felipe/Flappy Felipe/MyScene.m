@@ -500,7 +500,11 @@ static const int APP_STORE_ID = 820464950;
   SKSpriteNode *topObstacle = [self createObstacle];
   topObstacle.name = @"TopObstacle";
   topObstacle.zRotation = DegreesToRadians(180);
-  topObstacle.position = CGPointMake(startX, bottomObstacle.position.y + bottomObstacle.size.height/2 + topObstacle.size.height/2 + _player.size.height * kGapMultiplier);
+    
+    CGFloat bottomY = bottomObstacle.position.y + bottomObstacle.size.height/2 + topObstacle.size.height/2 + _player.size.height * kGapMultiplier;
+    bottomY = MAX(475, bottomY);
+  topObstacle.position = CGPointMake(startX, bottomY);
+    
   [_worldNode addChild:topObstacle];
 
    //This is where the ground moves.
